@@ -5,7 +5,7 @@ const useFetchPlugins = () => {
   const [totals, setTotals] = useState({ totalRuns: 0, totalInstalls: 0, totalLikes: 0 });
 
   useEffect(() => {
-    fetch('https://www.figma.com/api/plugins/profile/2392090?')
+    fetch('/api/proxy')
       .then(response => response.json())
       .then(data => {
         const plugins = data.meta.map(plugin => {
