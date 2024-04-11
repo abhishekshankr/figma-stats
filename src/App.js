@@ -22,8 +22,8 @@ const App = () => {
       spacing={2}
       sx={{ m: 'auto', p: 2 }}
     >
-      <Stack spacing={{ xs: 1, sm: 2, md: 4 }}
-      sx={{ m: 'auto', p: 2 }}
+      <Stack spacing={2}
+      sx={{ m: 'auto'}}
       direction={{ sm: 'column', md: 'row' }}>
         {/* Plugin Stats Card 
         <Card variant="soft" color="neutral" invertedColors={true} sx={{ flex: 1, p: 4, borderRadius: "xl", alignSelf: "flex-start" }}>
