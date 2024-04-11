@@ -63,7 +63,8 @@ const App = () => {
           <Link href="https://www.figma.com/@abhishekshankar" variant='neutral' level='body-sm'>@abhishekshankar</Link>
 
         </Card>
-        <Stack direction="row" spacing={2} justifyContent="space-between" alignItems="center" sx={{ flex: 1 }}>
+
+        
         {/* Total Users Card */}
         <Card variant="soft" color="success" invertedColors={true} sx={{ flex: 1, p: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: "xl" }}>
           <PeopleIcon fontSize='xl4' />
@@ -108,7 +109,6 @@ const App = () => {
           </Chip>
         </Card>
         </Stack>
-      </Stack>
 
       {/* Plugin Stats Table */}
       <Card variant="outlined" sx={{ p: 0, borderRadius: "xl" }}>
