@@ -15,7 +15,7 @@ const useFetchPlugins = () => {
             ...plugin,
             name: firstVersion.name
           };
-        }).sort((a, b) => b.like_count - a.like_count);
+        }).sort((a, b) => b.unique_run_count - a.unique_run_count);
         
         setPluginsData(plugins);
         
