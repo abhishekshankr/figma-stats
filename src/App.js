@@ -9,6 +9,7 @@ import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import useFetchPlugins from './useFetchPlugins';
 import PluginStatsTable from './PluginStatsTable';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const App = () => {
   const { pluginsData, totals } = useFetchPlugins();
@@ -114,6 +115,7 @@ const App = () => {
       <Card variant="outlined" sx={{ p: 0, borderRadius: "xl" }}>
         <PluginStatsTable pluginsData={pluginsData} totals={totals} />
       </Card>
+      <SpeedInsights />
     </Stack>
   );
 };
