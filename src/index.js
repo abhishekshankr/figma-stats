@@ -4,7 +4,7 @@ import App from './App';
 import { CssVarsProvider } from '@mui/joy/styles/CssVarsProvider';
 
 ReactDOM.render(
-  <CssVarsProvider>
+  <CssVarsProvider defaultMode="system">
     <App />
   </CssVarsProvider>,
   document.getElementById('root')

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Table from '@mui/joy/Table';
 
-export default function PluginStatsTable({ pluginsData, totals }) {
+export default function PluginStatsTable({ pluginsData}) {
   return (
     <Table aria-label="plugin stats table" sx={{ '& tr > *:not(:first-child)': { textAlign: 'center' }, '& tr > th:first-of-type, & tr > td:first-of-type': { paddingLeft: '32px' } }}>
       <thead >
@@ -22,14 +22,6 @@ export default function PluginStatsTable({ pluginsData, totals }) {
           </tr>
         ))}
       </tbody>
-      {/*<tfoot>
-        <tr>
-          <th scope="row">Totals</th>
-          <td>{totals.totalRuns}</td>
-          <td>{totals.totalInstalls}</td>
-          <td>{totals.totalLikes}</td>
-        </tr>
-      </tfoot>*/}
     </Table>
   );
 }
