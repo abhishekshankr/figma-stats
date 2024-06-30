@@ -14,14 +14,11 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 const App = () => {
   const { pluginsData, totals } = useFetchPlugins();
 
-  // Find the "Animated Emojis" plugin
-  //const animatedEmojisStats = pluginsData.find(plugin => plugin.name === "Animated Emojis") || {};
-
   return (
     <Stack
       direction="column"
       spacing={2}
-      sx={{ m: 'auto', p: 2 }}
+      sx={{ m: 'auto', p: 2}}
     >
       <Stack spacing={{xs: 2, sm: 2, md: 2}}
       sx={{ m: 'auto'}}
