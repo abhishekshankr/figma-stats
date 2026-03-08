@@ -27,10 +27,10 @@ export default function PluginStatsTable({ pluginsData }: PluginStatsTableProps)
       <TableBody>
         {pluginsData.map((plugin, index) => (
           <TableRow key={index}>
-            <TableCell className="pl-8">{plugin.name}</TableCell>
-            <TableCell className="text-center">{plugin.unique_run_count}</TableCell>
-            <TableCell className="text-center">{plugin.install_count}</TableCell>
-            <TableCell className="text-center">{plugin.like_count}</TableCell>
+            <TableCell className="pl-8 py-4">{plugin.name}</TableCell>
+            <TableCell className="text-center py-4">{plugin.unique_run_count}</TableCell>
+            <TableCell className="text-center py-4">{plugin.install_count}</TableCell>
+            <TableCell className="text-center py-4">{plugin.like_count}</TableCell>
           </TableRow>
         ))}
       </TableBody>
