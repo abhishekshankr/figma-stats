@@ -24,22 +24,22 @@ const App = () => {
         </Card>
 
         {/* Total Users Card */}
-        <Card className="flex-1 p-8 flex flex-col items-center justify-center gap-2 bg-emerald-50 border-emerald-200">
-          <Users className="w-8 h-8 text-emerald-600" />
+        <Card className="flex-1 p-8 flex flex-col items-center justify-center gap-2">
+          <Users className="w-8 h-8 text-muted-foreground" />
           <span className="text-4xl font-bold">{totals.totalRuns}</span>
           <Badge variant="secondary">Total Users</Badge>
         </Card>
 
         {/* Total Saves Card */}
-        <Card className="flex-1 p-8 flex flex-col items-center justify-center gap-2 bg-rose-50 border-rose-200">
-          <Bookmark className="w-8 h-8 text-rose-600" />
+        <Card className="flex-1 p-8 flex flex-col items-center justify-center gap-2">
+          <Bookmark className="w-8 h-8 text-muted-foreground" />
           <span className="text-4xl font-bold">{totals.totalInstalls}</span>
           <Badge variant="secondary">Total Saves</Badge>
         </Card>
 
         {/* Total Likes Card */}
-        <Card className="flex-1 p-8 flex flex-col items-center justify-center gap-2 bg-blue-50 border-blue-200">
-          <ThumbsUp className="w-8 h-8 text-blue-600" />
+        <Card className="flex-1 p-8 flex flex-col items-center justify-center gap-2">
+          <ThumbsUp className="w-8 h-8 text-muted-foreground" />
           <span className="text-4xl font-bold">{totals.totalLikes}</span>
           <Badge variant="secondary">Total Likes</Badge>
         </Card>
