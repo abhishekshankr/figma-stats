@@ -28,7 +28,7 @@ export default function PluginStatsTable({ pluginsData, loading }: PluginStatsTa
       </TableHeader>
       <TableBody>
         {loading
-          ? Array.from({ length: 6 }).map((_, i) => (
+          ? Array.from({ length: 8 }).map((_, i) => (
               <TableRow key={i}>
                 <TableCell className="pl-8 py-4"><Skeleton className="h-4 w-40" /></TableCell>
                 <TableCell className="text-center py-4"><Skeleton className="h-4 w-10 mx-auto" /></TableCell>
