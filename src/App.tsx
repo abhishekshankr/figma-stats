@@ -6,6 +6,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import useFetchPlugins from './useFetchPlugins'
 import PluginStatsTable from './PluginStatsTable'
+import PluginTrendsChart from './PluginTrendsChart'
 
 const App = () => {
   const { pluginsData, totals, loading } = useFetchPlugins()
@@ -45,6 +46,9 @@ const App = () => {
           <Badge variant="secondary">Total Likes</Badge>
         </Card>
       </div>
+
+      {/* Plugin Trends Chart */}
+      <PluginTrendsChart />
 
       {/* Plugin Stats Table */}
       <Card className="p-0">
