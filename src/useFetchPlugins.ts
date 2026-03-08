@@ -18,6 +18,7 @@ export interface Totals {
 const useFetchPlugins = () => {
   const [pluginsData, setPluginsData] = useState<Plugin[]>([])
   const [totals, setTotals] = useState<Totals>({ totalRuns: 0, totalInstalls: 0, totalLikes: 0 })
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch('/api/figmaData')
@@ -36,11 +37,15 @@ const useFetchPlugins = () => {
         const totalLikes = plugins.reduce((acc, p) => acc + p.like_count, 0)
 
         setTotals({ totalRuns, totalInstalls, totalLikes })
+        setLoading(false)
       })
-      .catch(error => console.error('Error fetching plugin data:', error))
+      .catch(error => {
+        console.error('Error fetching plugin data:', error)
+        setLoading(false)
+      })
   }, [])
 
-  return { pluginsData, totals }
+  return { pluginsData, totals, loading }
 }
 
 export default useFetchPlugins
