@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { Line, LineChart, XAxis, YAxis, CartesianGrid } from 'recharts'
+import { Bar, BarChart, XAxis, YAxis, CartesianGrid } from 'recharts'
 import { Card, CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
 import type { ChartConfig } from '@/components/ui/chart'
 import usePluginHistory, { type Metric } from './usePluginHistory'
 
-const CHART_COLORS = [
-  'var(--chart-1)',
-  'var(--chart-2)',
-  'var(--chart-3)',
-  'var(--chart-4)',
-  'var(--chart-5)',
+const PLUGIN_COLORS = [
+  '#6366f1', // indigo
+  '#f59e0b', // amber
+  '#10b981', // emerald
+  '#f43f5e', // rose
+  '#8b5cf6', // violet
 ]
 
 const METRICS: { key: Metric; label: string }[] = [
@@ -29,7 +29,7 @@ const PluginTrendsChart = () => {
   const chartConfig: ChartConfig = Object.fromEntries(
     pluginIds.map((id, i) => [
       id,
-      { label: pluginNames[id], color: CHART_COLORS[i % CHART_COLORS.length] },
+      { label: pluginNames[id], color: PLUGIN_COLORS[i % PLUGIN_COLORS.length] },
     ])
   )
 
@@ -44,7 +44,7 @@ const PluginTrendsChart = () => {
   return (
     <Card className="p-6 flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-medium text-muted-foreground">Daily Activity</h2>
+        <h2 className="text-sm font-medium text-muted-foreground">Daily Usage</h2>
         <div className="flex gap-1">
           {METRICS.map(m => (
             <button
@@ -63,7 +63,7 @@ const PluginTrendsChart = () => {
       </div>
       <CardContent className="p-0">
         <ChartContainer config={chartConfig} className="h-56 w-full">
-          <LineChart data={chartData}>
+          <BarChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis
               dataKey="date"
@@ -71,20 +71,23 @@ const PluginTrendsChart = () => {
               axisLine={false}
               tickFormatter={(v: string) => v.slice(5)}
             />
-            <YAxis tickLine={false} axisLine={false} width={40} />
+            <YAxis
+              tickLine={false}
+              axisLine={false}
+              width={40}
+              allowDecimals={false}
+            />
             <ChartTooltip content={<ChartTooltipContent />} />
-            {pluginIds.map((id) => (
-              <Line
+            {pluginIds.map((id, i) => (
+              <Bar
                 key={id}
-                type="monotone"
                 dataKey={id}
                 name={pluginNames[id]}
-                stroke={`var(--color-${id})`}
-                strokeWidth={2}
-                dot={false}
+                fill={PLUGIN_COLORS[i % PLUGIN_COLORS.length]}
+                radius={[2, 2, 0, 0]}
               />
             ))}
-          </LineChart>
+          </BarChart>
         </ChartContainer>
       </CardContent>
     </Card>
