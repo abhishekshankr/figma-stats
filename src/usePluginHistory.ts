@@ -40,14 +40,36 @@ const usePluginHistory = (metric: Metric) => {
   }, [rawRows])
 
   const chartData = useMemo<ChartDataPoint[]>(() => {
-    const byDate: Record<string, ChartDataPoint> = {}
+    // Group rows by plugin, sorted by date
+    const byPlugin: Record<string, RawRow[]> = {}
     for (const row of rawRows) {
-      if (!byDate[row.recorded_at]) {
-        byDate[row.recorded_at] = { date: row.recorded_at }
-      }
-      byDate[row.recorded_at][row.plugin_id] = row[metric]
+      if (!byPlugin[row.plugin_id]) byPlugin[row.plugin_id] = []
+      byPlugin[row.plugin_id].push(row)
     }
-    return Object.values(byDate).sort((a, b) => a.date.localeCompare(b.date))
+    for (const rows of Object.values(byPlugin)) {
+      rows.sort((a, b) => a.recorded_at.localeCompare(b.recorded_at))
+    }
+
+    // Collect all dates
+    const allDates = [...new Set(rawRows.map(r => r.recorded_at))].sort()
+
+    // Build chart data as daily deltas (today's value - yesterday's value)
+    const byDate: Record<string, ChartDataPoint> = {}
+    for (const date of allDates) {
+      byDate[date] = { date }
+    }
+
+    for (const [pluginId, rows] of Object.entries(byPlugin)) {
+      for (let i = 0; i < rows.length; i++) {
+        const row = rows[i]
+        const prev = rows[i - 1]
+        const delta = prev ? Math.max(0, row[metric] - prev[metric]) : 0
+        byDate[row.recorded_at][pluginId] = delta
+      }
+    }
+
+    // Drop the first data point (no previous to diff against, always 0)
+    return Object.values(byDate).sort((a, b) => a.date.localeCompare(b.date)).slice(1)
   }, [rawRows, metric])
 
   return { chartData, pluginNames, loading, error }

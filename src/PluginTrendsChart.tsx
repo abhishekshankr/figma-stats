@@ -44,7 +44,7 @@ const PluginTrendsChart = () => {
   return (
     <Card className="p-6 flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-medium text-muted-foreground">Trends</h2>
+        <h2 className="text-sm font-medium text-muted-foreground">Daily Activity</h2>
         <div className="flex gap-1">
           {METRICS.map(m => (
             <button
