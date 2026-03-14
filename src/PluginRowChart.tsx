@@ -6,8 +6,8 @@ import { Skeleton } from '@/components/ui/skeleton'
 import usePluginHistory, { type Metric } from './usePluginHistory'
 
 const METRICS: { key: Metric; label: string; color: string }[] = [
-  { key: 'unique_run_count', label: 'Users', color: '#6366f1' },
-  { key: 'install_count', label: 'Saves', color: '#f59e0b' },
+  { key: 'unique_run_count', label: 'Users', color: '#22c55e' },
+  { key: 'install_count', label: 'Saves', color: '#3b82f6' },
   { key: 'like_count', label: 'Likes', color: '#f43f5e' },
 ]
 
